@@ -4,7 +4,7 @@ import axios from 'axios';
 const WeatherAxios = () => {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
-  const API_KEY = 'f4d3d0f8ffa543c35ed59e54b807111e'; // Pegue em openweathermap.org
+  const API_KEY = 'SUA_KEY'; // Pegue em openweathermap.org
 
   const getWeather = async () => {
     try {
