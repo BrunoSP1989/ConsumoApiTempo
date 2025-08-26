@@ -4,18 +4,19 @@ import axios from 'axios';
 const WeatherAxios = () => {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
-  const API_KEY = 'SUA_KEY'; // Pegue em openweathermap.org
+  const [error, setError] = useState(''); // Novo estado para erro
+  const API_KEY = 'f4d3d0f8ffa543c35ed59e54b807111e'; // Pegue em openweathermap.org
 
   const getWeather = async () => {
     try {
+      setError(''); // Limpa erro anterior
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=pt_br`
       );
-      
       setWeather(response.data);
-   
     } catch (error) {
-      alert('Erro ao buscar clima. Verifique o nome da cidade.');
+      setWeather(null);
+      setError('Erro ao buscar clima. Verifique o nome da cidade.');
     }
   };
 
@@ -32,6 +33,12 @@ const WeatherAxios = () => {
       <button onClick={getWeather} style={{ padding: '0.5rem 1rem' }}>
         Buscar
       </button>
+
+      {error && (
+        <div style={{ color: 'red', marginTop: '1rem' }}>
+          {error}
+        </div>
+      )}
 
       {weather && (
         <div style={{ marginTop: '2rem' }}>
