@@ -46,6 +46,13 @@ const WeatherAxios = () => {
           <p>{weather.weather[0].description}</p>
           <p>🌡️ {weather.main.temp}°C</p>
           <p>💧 Umidade: {weather.main.humidity}%</p>
+          <p>🌬️ Vento: {weather.wind.speed} m/s</p>
+          <p>🌅 Nascer do sol: {new Date(weather.sys.sunrise * 1000).toLocaleTimeString()}</p>
+          <p>🌇 Pôr do sol: {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}</p>
+          <p>🕒 Data/Hora atual: {new Date(weather.dt * 1000).toLocaleString()}</p>
+          
+
+
         </div>
       )}
     </div>
